@@ -7,3 +7,7 @@ def app_operation(sp):
                                  sp.command_insert_employers)
     else:
         pass
+    vacancies = sp.api.get_vacancies_from_company('196621', sp.link_hh_vacancies)
+    if vacancies != 0:
+        for i in vacancies:
+            print(i)

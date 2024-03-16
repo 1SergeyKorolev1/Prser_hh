@@ -19,3 +19,15 @@ class Api(AbstractApi):
         except (Exception, requests.exceptions.ConnectionError) as error:
             print(error)
             return 0
+
+    def get_vacancies_from_company(self, id_, link):
+        params = {
+            "per_page": 20,
+            "employer_id": id_
+        }
+        try:
+            response = requests.get(link, params)
+            return json.loads(response.text)['items']
+        except (Exception, requests.exceptions.ConnectionError) as error:
+            print(error)
+            return 0
