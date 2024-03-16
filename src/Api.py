@@ -18,3 +18,4 @@ class Api(AbstractApi):
             return res_list
         except (Exception, requests.exceptions.ConnectionError) as error:
             print(error)
+            return 0

@@ -50,7 +50,13 @@ def create_table(name_db, name_table, command):
 def write_employers_in_db(employers, name_db):
     cur, conn = connect_database(name_db)
     for i in employers:
-        cur.execute(
-            "insert into employers (employer_id, employer_name, employer_url, open_vacancies) values (%s, %s, %s, %s)",
-            i)
+        try:
+            cur.execute(
+                "insert into employers (employer_id, employer_name, employer_url, open_vacancies) values (%s, %s, %s, %s)",
+                i)
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+    print("Таблица employers успешно наполнена данными работодателей")
+    cur.close()
+    conn.close()
 
