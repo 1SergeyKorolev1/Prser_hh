@@ -20,22 +20,8 @@ def create_database(name_db):
         print(error)
 
 
-def connect_database(name_db):
-    try:
-        conn = psycopg2.connect(database=name_db,
-                                user="postgres",
-                                password="1234",
-                                host="localhost")
-
-        cursor = conn.cursor()
-        conn.autocommit = True
-        return cursor, conn
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-
-
-def create_table(name_db, name_table, command):
-    cur, conn = connect_database(name_db)
+def create_table(name_db, name_table, command, work_with_db):
+    cur, conn = work_with_db.connect_database(name_db)
     try:
         cur.execute(f"CREATE TABLE {name_table} ({command})")
         print(f"Таблица {name_table} успешно создана")
@@ -47,16 +33,16 @@ def create_table(name_db, name_table, command):
         print(error)
 
 
-def write_employers_in_db(employers, name_db):
-    cur, conn = connect_database(name_db)
+def write_employers_in_db(employers, name_db, work_with_db, name_table, command):
+    cur, conn = work_with_db.connect_database(name_db)
     for i in employers:
         try:
             cur.execute(
-                "insert into employers (employer_id, employer_name, employer_url, open_vacancies) values (%s, %s, %s, %s)",
+                f"insert into {name_table} {command}",
                 i)
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
-    print("Таблица employers успешно наполнена данными работодателей")
+    print(f"Таблица {name_table} успешно наполнена данными работодателей")
     cur.close()
     conn.close()
 
