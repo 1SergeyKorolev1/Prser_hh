@@ -34,9 +34,9 @@ class Api(AbstractApi):
         try:
             for i in res:
                 salary = self.get_salary(i)
-                description = self.description(i)
+                description = self.description(i).lower()
                 res_list.append(
-                    [i['id'], i['name'], salary, i['alternate_url'], i['employer']['id'], i['employer']['name'],
+                    [i['id'], i['name'].lower(), salary, i['alternate_url'], i['employer']['id'], i['employer']['name'],
                      description])
             return res_list
         except (Exception, requests.exceptions.ConnectionError) as error:

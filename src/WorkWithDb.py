@@ -61,3 +61,25 @@ class WorkWithDb:
             print(f'Название вакансии - {i[0]} | заплата - {int(i[1])} | ссылка на вакансию - {int(i[1])}')
         cur.close()
         conn.close()
+
+    @staticmethod
+    def get_vacancies_with_keyword(work_with_db, name_db, password_db, keyword):
+        cur, conn = work_with_db.connect_database(name_db, password_db)
+        cur.execute(f"select vacancy_name, salary, vacancy_url from vacancies where vacancy_name like '%{keyword}%'")
+        data = cur.fetchall()
+        print('\nполучаем список всех вакансий, в названии которых содержатся переданные в метод слова..:')
+        for i in data:
+            print(f'Название вакансии - {i[0]} | заплата - {int(i[1])} | ссылка на вакансию - {int(i[1])}')
+        cur.close()
+        conn.close()
+
+    @staticmethod
+    def get_vacancies_with_keyword_in_description(work_with_db, name_db, password_db, keyword):
+        cur, conn = work_with_db.connect_database(name_db, password_db)
+        cur.execute(f"select vacancy_name, salary, vacancy_url from vacancies where description like '%{keyword}%'")
+        data = cur.fetchall()
+        print('\nполучаем список всех вакансий, в описании которых содержатся переданные в метод слова..:')
+        for i in data:
+            print(f'Название вакансии - {i[0]} | заплата - {int(i[1])} | ссылка на вакансию - {int(i[1])}')
+        cur.close()
+        conn.close()

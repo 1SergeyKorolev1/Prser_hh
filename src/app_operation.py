@@ -15,5 +15,7 @@ def app_operation(sp):
         sp.work_with_db.get_all_vacancies(sp.work_with_db, sp.name_db, sp.password_db)
         sp.work_with_db.get_avg_salary(sp.work_with_db, sp.name_db, sp.password_db)
         sp.work_with_db.get_vacancies_with_higher_salary(sp.work_with_db, sp.name_db, sp.password_db)
-    else:
-        pass
+        keyword = input('Введите ключевое слово для поиска по названию вакансий:')
+        sp.work_with_db.get_vacancies_with_keyword(sp.work_with_db, sp.name_db, sp.password_db, keyword)
+        keyword = input('Введите ключевое слово для поиска по описанию вакансий:')
+        sp.work_with_db.get_vacancies_with_keyword_in_description(sp.work_with_db, sp.name_db, sp.password_db, keyword)
