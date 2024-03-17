@@ -2,11 +2,11 @@ import psycopg2
 
 class WorkWithDb:
     @staticmethod
-    def connect_database(name_db):
+    def connect_database(name_db, password_db):
         try:
             conn = psycopg2.connect(database=name_db,
                                     user="postgres",
-                                    password="1234",
+                                    password=password_db,
                                     host="localhost")
 
             cursor = conn.cursor()

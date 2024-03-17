@@ -1,11 +1,11 @@
 import psycopg2
 
 
-def create_database(name_db):
+def create_database(name_db, password_db):
     try:
         conn = psycopg2.connect(database="postgres",
                                 user="postgres",
-                                password="1234",
+                                password=password_db,
                                 host="localhost")
 
         cursor = conn.cursor()
@@ -20,8 +20,8 @@ def create_database(name_db):
         print(error)
 
 
-def create_table(name_db, name_table, command, work_with_db):
-    cur, conn = work_with_db.connect_database(name_db)
+def create_table(name_db, name_table, command, work_with_db, password_db):
+    cur, conn = work_with_db.connect_database(name_db, password_db)
     try:
         cur.execute(f"CREATE TABLE {name_table} ({command})")
         print(f"Таблица {name_table} успешно создана")
@@ -33,8 +33,8 @@ def create_table(name_db, name_table, command, work_with_db):
         print(error)
 
 
-def write_employers_in_db(employers, name_db, work_with_db, name_table, command, name_for_print):
-    cur, conn = work_with_db.connect_database(name_db)
+def write_data_in_db(employers, name_db, work_with_db, name_table, command, name_for_print, password_db):
+    cur, conn = work_with_db.connect_database(name_db, password_db)
     for i in employers:
         try:
             cur.execute(
