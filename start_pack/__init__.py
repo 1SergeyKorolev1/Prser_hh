@@ -9,6 +9,7 @@ link_hh_employers = 'http://api.hh.ru/employers'
 link_hh_vacancies = 'http://api.hh.ru/vacancies'
 name_db = 'db_hh'
 password_db = '1234'
+count_vacancies = 10
 name_table_employers = 'employers'
 name_table_vacancies = 'vacancies'
 name_for_print_employers = 'работодателей'

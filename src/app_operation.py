@@ -7,7 +7,7 @@ def app_operation(sp):
         sp.write_data_in_db(employers_list, sp.name_db, sp.work_with_db, sp.name_table_employers,
                             sp.command_insert_employers, sp.name_for_print_employers, sp.password_db)
         for i in employers_list:
-            vacancies_list = sp.api.get_vacancies_from_company_api(i[0], sp.link_hh_vacancies)
+            vacancies_list = sp.api.get_vacancies_from_company_api(i[0], sp.link_hh_vacancies, sp.count_vacancies)
             if vacancies_list != 0:
                 sp.write_data_in_db(vacancies_list, sp.name_db, sp.work_with_db, sp.name_table_vacancies,
                                     sp.command_insert_vacancies, sp.name_for_print_vacancies, sp.password_db)

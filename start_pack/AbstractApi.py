@@ -7,7 +7,7 @@ class AbstractApi(ABC):
         pass
 
     @abstractmethod
-    def get_vacancies_from_company_api(self, id_, link):
+    def get_vacancies_from_company_api(self, id_, link, count_vacancies):
         pass
 
     @abstractmethod

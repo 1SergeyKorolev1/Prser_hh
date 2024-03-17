@@ -22,9 +22,9 @@ class Api(AbstractApi):
             print(error)
             return 0
 
-    def get_vacancies_from_company_api(self, id_, link):
+    def get_vacancies_from_company_api(self, id_, link, count_vacancies):
         params = {
-            "per_page": 100,
+            "per_page": count_vacancies,
             "employer_id": id_,
             'area': 113
         }
