@@ -33,7 +33,7 @@ def create_table(name_db, name_table, command, work_with_db):
         print(error)
 
 
-def write_employers_in_db(employers, name_db, work_with_db, name_table, command):
+def write_employers_in_db(employers, name_db, work_with_db, name_table, command, name_for_print):
     cur, conn = work_with_db.connect_database(name_db)
     for i in employers:
         try:
@@ -42,7 +42,7 @@ def write_employers_in_db(employers, name_db, work_with_db, name_table, command)
                 i)
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
-    print(f"Таблица {name_table} успешно наполнена данными работодателей")
+    print(f"Таблица {name_table} успешно наполнена данными {name_for_print}")
     cur.close()
     conn.close()
 
