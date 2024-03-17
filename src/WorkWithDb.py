@@ -39,3 +39,14 @@ class WorkWithDb:
                 f'Название компании - {i[0]} | название вакансии - {i[1]} | зарплата - {i[2]} | ссылка на вакансию - {i[3]}')
         cur.close()
         conn.close()
+
+    @staticmethod
+    def get_avg_salary(work_with_db, name_db, password_db):
+        cur, conn = work_with_db.connect_database(name_db, password_db)
+        cur.execute(f"select employer_name, avg(salary) from vacancies group by employer_name")
+        data = cur.fetchall()
+        print('\nполучаем среднюю зарплату по вакансиям..:')
+        for i in data:
+            print(f'Название компании - {i[0]} | средняя заплата по вакансиям - {int(i[1])}')
+        cur.close()
+        conn.close()

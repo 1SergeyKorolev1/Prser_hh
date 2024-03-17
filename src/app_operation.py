@@ -13,5 +13,6 @@ def app_operation(sp):
                                     sp.command_insert_vacancies, sp.name_for_print_vacancies, sp.password_db)
         sp.work_with_db.get_companies_and_vacancies_count(sp.work_with_db, sp.name_db, sp.password_db)
         sp.work_with_db.get_all_vacancies(sp.work_with_db, sp.name_db, sp.password_db)
+        sp.work_with_db.get_avg_salary(sp.work_with_db, sp.name_db, sp.password_db)
     else:
         pass
