@@ -12,5 +12,6 @@ def app_operation(sp):
                 sp.write_data_in_db(vacancies_list, sp.name_db, sp.work_with_db, sp.name_table_vacancies,
                                     sp.command_insert_vacancies, sp.name_for_print_vacancies, sp.password_db)
         sp.work_with_db.get_companies_and_vacancies_count(sp.work_with_db, sp.name_db, sp.password_db)
+        sp.work_with_db.get_all_vacancies(sp.work_with_db, sp.name_db, sp.password_db)
     else:
         pass
