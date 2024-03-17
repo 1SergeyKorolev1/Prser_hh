@@ -50,3 +50,14 @@ class WorkWithDb:
             print(f'Название компании - {i[0]} | средняя заплата по вакансиям - {int(i[1])}')
         cur.close()
         conn.close()
+
+    @staticmethod
+    def get_vacancies_with_higher_salary(work_with_db, name_db, password_db):
+        cur, conn = work_with_db.connect_database(name_db, password_db)
+        cur.execute(f"select vacancy_name, salary, vacancy_url from vacancies where salary > (select avg(salary) from vacancies)")
+        data = cur.fetchall()
+        print('\nполучаем список всех вакансий, у которых зарплата выше средней по всем вакансиям..:')
+        for i in data:
+            print(f'Название вакансии - {i[0]} | заплата - {int(i[1])} | ссылка на вакансию - {int(i[1])}')
+        cur.close()
+        conn.close()

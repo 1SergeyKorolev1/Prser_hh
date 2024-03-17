@@ -25,7 +25,8 @@ class Api(AbstractApi):
     def get_vacancies_from_company_api(self, id_, link):
         params = {
             "per_page": 100,
-            "employer_id": id_
+            "employer_id": id_,
+            'area': 113
         }
         response = requests.get(link, params)
         res = json.loads(response.text)['items']
