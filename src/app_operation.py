@@ -1,5 +1,5 @@
 def app_operation(sp):
-    sp.create_database(sp.name_db, sp.password_db)
+    sp.work_with_db.create_database(sp.name_db, sp.password_db)
     sp.create_table(sp.name_db, sp.name_table_employers, sp.command_employers, sp.work_with_db, sp.password_db)
     sp.create_table(sp.name_db, sp.name_table_vacancies, sp.command_vacancies, sp.work_with_db, sp.password_db)
     employers_list = sp.api.get_employers_api(sp.link_hh_employers)
